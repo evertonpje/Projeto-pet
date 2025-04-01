@@ -1,0 +1,92 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feira de Adoção</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css\styles.css">
+</head>
+  
+<body>
+    <header>
+            <div class="logo">
+                <svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M14 10h1.652c1.708 0 2.63 2.004 1.518 3.302l-1.618 1.887A4.501 4.501 0 0024.5 14.5a1.5 1.5 0 013 0A7.5 7.5 0 0114 19 7.5 7.5 0 01.5 14.5a1.5 1.5 0 013 0 4.5 4.5 0 008.948.689l-1.618-1.887C9.718 12.004 10.64 10 12.35 10H14z" fill="#333"></path><circle cx="21" cy="3" r="3" fill="#333"></circle><circle cx="7" cy="3" r="3" fill="#333"></circle></svg>
+            </div>
+    </header>
+    <section class="main">
+        <div class="overview">
+            <div class="overview-title">Visao Geral</div>
+            <div class="overview-grid">
+                <div class="overview-item">
+                                <div class="overview-left">
+                                    <small> <a href="Listagem.jsp"> Lista Usuarios</a></small>
+                                    
+                                </div>
+                            </div>
+                            <div class="overview-item">
+                                <div class="overview-left">
+                                    <small>Lista de Pets</small>
+                                    
+                                </div>
+                            </div>
+                            <div class="overview-item">
+                                <div class="overview-left">
+                                    <small>Total de Adocoes</small>
+                                  
+                                </div>
+                            </div>
+                        </div>
+            </div>
+
+            <div class="users">
+                <div class="users-title">Usuarios  <a href="usersAddForm.jsp?acao=inclusao"><button class="add-button">Adicionar Usuario +</button></div></a>
+                <div class="users-grid">
+                    <div class="user-item">
+                        <img class="user-img" />
+                        <h3>Nome do Usuario</h3>
+                        <div class="controls">
+                            <button>Delete Usuario</button>
+                            <button>Edit Usuario</button>
+                        </div>
+                    </div>
+                    <div class="user-item">
+                        <img class="user-img" />
+                        <h3>Nome do Usuario</h3>
+                        <div class="controls">
+                            <button>Remover Usuario</button>
+                            <button>Editar Usuario</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pets">
+                <div class="pets-title">Pets  <a href="petsAddForm.jsp"><button class="add-button">Adicionar Pet +</button></div></a>
+                <div class="pets-grid">
+                      <div class="pet-item">
+                            <img class="pet-img" />
+                            <h3>Nome do Pet</h3>
+                            <div class="controls">
+                              <button>Remover Pet</button>
+                              <button>Editar Pet</button>
+                            </div>
+                      </div>
+                </div>
+            </div>
+
+            <div class="pets">
+                <div class="pets-title">Adocoes  <a href="adoptionsForm.jsp"><button class="add-button">Adicionar Adocao +</button></div></a>
+                <div class="pets-grid">
+                      <div class="pet-item">
+                            <img class="pet-img" />
+                            <h3>Nome Do Usuario</h3>
+                            x
+                            <h3>Nome Do Pet</h3>
+                      </div>
+                </div>
+            </div>
+    </section>
+</body>
+</html>
