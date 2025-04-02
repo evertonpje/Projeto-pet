@@ -4,9 +4,17 @@
         <servlet-name>ClienteSRV</servlet-name>
         <servlet-class>controller.ClienteSRV</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AnimalSRV</servlet-name>
+        <servlet-class>controller.AnimalSRV</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ClienteSRV</servlet-name>
         <url-pattern>/ClienteSRV</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AnimalSRV</servlet-name>
+        <url-pattern>/AnimalSRV</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

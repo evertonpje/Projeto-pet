@@ -8,6 +8,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="./css/styles.css"></head>
 <body>
+     <%
+        String acao = request.getParameter("acao");
+        
+        %>
     <header>
         <a href="index.html" style="position: absolute; left: 200px;">Voltar</a>
         <div class="logo">
@@ -15,25 +19,24 @@
         </div>
     </header>
     <section class="main">
-        <form action="#">
+       <form action="AnimalSRV" method = "POST" >
+           <input type ="hidden" name="acao" value="<%=acao %>" /> 
+           
             <h1 style="margin-bottom: 30px; text-align: center;">Criar Novo Pet</h1>
             <div class="form-input">
                 <label for="name">Nome do Pet</label>
-                <input type="text" name="name" id="name"/>
+                <input type="text" name="nome" id="nome" value=""/>
             </div>
             <div class="form-input">
-                <label for="age">Idade</label>
-                <input type="number" name="age" id="age"/>
+                <label for="race">Espicie</label>
+                <input type="text" name="especie" id="especie" value=""/>
             </div>
             <div class="form-input">
-                <label for="race">RaÃ§a</label>
-                <input type="text" name="name" id="name"/>
+                <label for="race">Raça</label>
+                <input type="text" name="raca" id="raca" value=""/>
             </div>
-            <div class="form-input">
-                <label for="weight">Peso</label>
-                <input type="number" name="weight" id="weight"/>
-            </div>
-            <input type="submit" value="Criar" class="submit">
+            <input type="submit" value="Criar" class="submit" value="">
+                 <input type="reset" value="Limpar" class="submit">
         </form>
     </section>
 </body>

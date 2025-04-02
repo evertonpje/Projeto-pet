@@ -23,17 +23,16 @@ public class Animal {
     private String nome;
     private String especie;
     private String raca;
-    private int idade;
+    
 
     public Animal() {
     }
 
     
-    public Animal(String nome, String especie, String raca, int idade) {
+    public Animal(String nome, String especie, String raca) {
         this.nome = nome;
         this.especie = especie;
         this.raca = raca;
-        this.idade = idade;
     }
 
     public int getId() {
@@ -68,20 +67,13 @@ public class Animal {
         this.raca = raca;
     }
 
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
+    @Override
+    public String toString() {
+        return "Animal{" + "id=" + id + ", nome=" + nome + ", especie=" + especie + ", raca=" + raca + '}';
     }
 
     
-
-    @Override
-    public String toString() {
-        return "Animal{" + "id=" + id + ", nome=" + nome + ", especie=" + especie + ", raca=" + raca + ", idade=" + idade + '}';
-    }
+  
     
     
     
