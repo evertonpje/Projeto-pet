@@ -1,21 +1,21 @@
 <%-- 
     Document   : Listagem
-    Created on : 1 de abr. de 2025, 17:19:58
-    Author     : evert
+    Created on : 10 de mar. de 2025, 18:44:05
+    Author     : lefoly
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    
-<%
-    String listaHTML = request.getParameter("lista");
-%>   
-
-<head>
+    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Listagem de Clientes</title>
     </head>
+
+    <%
+        String listaHTML = request.getParameter("lista");
+    %>    
+
     <body>
         <br>
         <br>
@@ -24,9 +24,16 @@
             <thead>
                 <tr>
                     <th>Nome</th>
+                    <th></th>
                     <th>Telefone</th>
+                    <th></th>
                     <th>Email</th>
-                    <th>Endereço</th>
+                     <th></th>
+                       <th>Endereco</th>
+                       <th></th>
+                       <th></th>
+                       
+                    
                 </tr>
             </thead>
             <tbody>

@@ -31,7 +31,7 @@ public class Cliente {
     private String endereco;
    
     
-     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = false)
     @JoinTable(
         name = "cliente_animal", 
         joinColumns = @JoinColumn(name = "cliente_id"), 
