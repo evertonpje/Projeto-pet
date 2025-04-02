@@ -16,6 +16,7 @@ import model.dao.ClienteDaoJpa;
 import model.dao.DaoFactory;
 import model.dao.InterfaceDao;
 
+
 /**
  *
  * @author evert
@@ -37,7 +38,7 @@ public class ClienteSRV extends HttpServlet {
      try {
             
             String acao = request.getParameter("acao");
-            
+            String id = request.getParameter("id");
             String nome = request.getParameter("nome");
             String telefone = request.getParameter("telefone");
             String email = request.getParameter("email");
@@ -59,20 +60,45 @@ public class ClienteSRV extends HttpServlet {
                     System.out.println("Erro: " + ex.getMessage());
                     
                 }
-                rd = request.getRequestDispatcher("index.html");
+                rd = request.getRequestDispatcher("Listagem.jsp");
                 rd.forward (request, response);
                 
                  break;
                     
                 case "exclusao":
+                    try {
+                        c = new Cliente();
+                        c.setId(Integer.parseInt(id));
+                        dao.excluir(c);
+                    } catch (Exception ex) {
+                        System.out.println(ex.getMessage());
+                    }
+                    rd = request.getRequestDispatcher("Listagem.jsp?lista=" + listagem());
+                    rd.forward(request, response);  
                     
                     break;
                     
-                case "pre_edicao":
-                    
+                case "pre-edicao":
+                   c = (Cliente) dao.pesquisarPorId(Integer.parseInt(id));
+                    rd = request.getRequestDispatcher("usersEditForm.jsp?acao=edicao"
+                            + "&id=" + c.getId()
+                            + "&nome=" + c.getNome()
+                            + "&telefone=" + c.getTelefone()
+                            + "&email=" + c.getEmail()
+                            + "&endereco=" + c.getEndereco());
+                    rd.forward(request, response);
                     break;
                     
                 case "edicao":
+                    c = new Cliente(nome, telefone, email, endereco);
+                    c.setId(Integer.parseInt(id));
+                    try {
+                        dao.editar(c);
+                    } catch (Exception ex) {
+                        System.out.println(ex.getMessage());
+                    }
+                    rd = request.getRequestDispatcher("Listagem.jsp?lista=" + listagem());
+                    rd.forward(request, response);
                     
                     break;
                     
@@ -86,40 +112,36 @@ public class ClienteSRV extends HttpServlet {
              System.out.println("Erro: " + ex.getMessage());
         }
     }
-private String listagem() {
+    private String listagem() {
         InterfaceDao dao = new ClienteDaoJpa();
         List<Cliente> lista = null;
         try {
             lista = dao.listar();
+
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-
-        String listaHTML = "";
+        String listaHTML = " ";
         for (Cliente cliente : lista) {
             listaHTML = listaHTML
                     + "<tr>"
-                    + "<td>" + cliente.getNome() + "</td>"
-                    + "<td>" + cliente.getTelefone()+ "</td>"
-                    + "<td>" + cliente.getEmail()+ "</td>"
-                    + "<td><form action=ClienteSrv?acao=pre-edicao method='POST'>"
+                    + "<td>" + cliente.getNome() + "<td>"
+                    + "<td>" + cliente.getTelefone() + "<td>"
+                    + "<td>" + cliente.getEmail() + "<td>"
+                    + "<td>" + cliente.getEndereco() + "<td>"
+                    + "<td><form action=ClienteSRV?acao=pre-edicao method='POST'>"
                     + "<input type='hidden' name='id' value="
                     + cliente.getId() + "><input type='submit' value=editar>"
                     + "</form></td>"
-                    + "<form action=ClienteSrv?acao=exclusao method='POST'>"
+                    + "<form action=ClienteSRV?acao=exclusao method='POST'>"
                     + "<td><input type='hidden' name='id' value="
                     + cliente.getId() + "><input type='submit' value=excluir></td>"
                     + "</form>"
-                    
-                    + "</tr>";
+                    + "<tr>";
         }
-        return listaHTML;
 
-        
-        
+        return listaHTML;
     }
-    
-    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

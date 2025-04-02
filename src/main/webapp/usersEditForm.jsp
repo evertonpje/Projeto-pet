@@ -8,6 +8,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="./css/styles.css"></head>
 <body>
+    
+    <%
+        String acao     = request.getParameter("acao");
+        String id       = request.getParameter("id");
+        String nome     = request.getParameter("nome");
+        String telefone = request.getParameter("telefone");
+        String email    = request.getParameter("email");
+        String endereco = request.getParameter("endereco");
+        
+        if (id == null) {
+            nome = "";
+            telefone = "";
+            email = "";
+            endereco = "";
+        }
+     %>
     <header>
         <a href="index.html" style="position: absolute; left: 200px;">Voltar</a>
         <div class="logo">
@@ -15,26 +31,39 @@
         </div>
     </header>
     <section class="main">
-        <form action="#">
+       <form action="ClienteSRV" method="POST">
+           
             <h1 style="margin-bottom: 30px; text-align: center;">Editar Usuario</h1>
+            
+            <div class="form-input">
+                <label for="name"></label>
+                <input type="hidden" name="acao" id="acao" value="<%=acao %>"/>
+            </div>
+            
+            <div class="form-input">
+                <label for="name"></label>
+                <input type="hidden" name="id" id="id" value="<%=id %>"/>
+            </div>
+            
             <div class="form-input">
                 <label for="name">Nome do Usuario</label>
-                <input type="text" name="name" id="name"/>
+                <input type="text" name="nome" id="name" value="<%=nome %>"/>
             </div>
             <div class="form-input">
                 <label for="phone">Telefone</label>
-                <input type="number" name="phone" id="phone"/>
+                <input type="number" name="telefone" id="telefone" value="<%=telefone %>"/>
             </div>
             <div class="form-input">
                 <label for="email">Email: </label>
-                <input type="email" name="email" id="email"/>
+                <input type="email" name="email" id="email" value="<%=email %>"/>
             </div>
             <div class="form-input">
                 <label for="address">Endereco: </label>
-                <input type="text" name="address" id="address"/>
+                <input type="text" name="endereco" id="telefone" value="<%=endereco %>"/>
             </div>
 
-            <input type="submit" value="Criar" class="submit">
+            <input type="submit" value="Editar" class="submit">
+                    <input type="reset" value="Limpar" class="submit" />
         </form>
     </section>
 </body>
