@@ -9,5 +9,8 @@ public class DaoFactory {
     public static AnimalDaoJpa novoAnimalDAO() throws Exception {
         return new AnimalDaoJpa();
     }
+     public static ClienteAnimalDaoJpa novoClienteAnimalDAO() throws Exception {
+        return new ClienteAnimalDaoJpa();
+    }
     
 }

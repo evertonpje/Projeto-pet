@@ -8,6 +8,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="./css/styles.css"></head>
 <body>
+    
+       <%
+        String acao = request.getParameter("acao");
+        %>
+        
     <header>
         <a href="index.html" style="position: absolute; left: 200px;">Voltar</a>
         <div class="logo">
@@ -15,18 +20,21 @@
         </div>
     </header>
     <section class="main">
-        <form action="#">
+     <form action="AdocaoSRV" method="POST">
+         <input type="hidden" name="acao" value="<%=acao %>">
+             
             <h1 style="margin-bottom: 30px; text-align: center;">Criar Adocao</h1>
             <div class="form-input">
-                <label for="userId"> ID do Usuario</label>
-                <input type="number" name="userId" id="userId"/>
+                <label for="userId"> Cliente</label>
+                <input type="text" name="cliente_id" id="cliente_id"  value=""/>
             </div>
             <div class="form-input">
-                <label for="petId">ID do Pet</label>
-                <input type="number" name="petId" id="petId"/>
+                <label for="petId">Animal</label>
+                <input type="text" name="animal_id" id="animal_id" value=""/>
             </div>
-            <input type="submit" value="Criar" class="submit">
+            <input type="submit" value="Adotar" class="submit">
         </form>
+             
     </section>
 </body>
 </html>

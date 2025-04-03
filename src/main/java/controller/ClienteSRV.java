@@ -60,7 +60,7 @@ public class ClienteSRV extends HttpServlet {
                     System.out.println("Erro: " + ex.getMessage());
                     
                 }
-                rd = request.getRequestDispatcher("Listagem.jsp");
+                rd = request.getRequestDispatcher("ClienteSRV?acao=listagem");
                 rd.forward (request, response);
                 
                  break;
@@ -125,6 +125,7 @@ public class ClienteSRV extends HttpServlet {
         for (Cliente cliente : lista) {
             listaHTML = listaHTML
                     + "<tr>"
+                    + "<td>" + cliente.getId()+ "<td>"
                     + "<td>" + cliente.getNome() + "<td>"
                     + "<td>" + cliente.getTelefone() + "<td>"
                     + "<td>" + cliente.getEmail() + "<td>"

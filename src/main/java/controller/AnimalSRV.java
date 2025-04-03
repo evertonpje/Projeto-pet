@@ -63,7 +63,7 @@ public class AnimalSRV extends HttpServlet {
                     System.out.println("Erro: " + ex.getMessage());
                     
                 }
-                rd = request.getRequestDispatcher("ListagemAnimal.jsp");
+                rd = request.getRequestDispatcher("AnimalSRV?acao=listagem");
                 rd.forward (request, response);
                 
                  break;
@@ -125,11 +125,14 @@ public class AnimalSRV extends HttpServlet {
         }
         String listaHTML = " ";
         for (Animal animal : lista) {
+             String statusAdocao = (animal.getAdotado() != null && animal.getAdotado()) ? "Sim" : "Não";
             listaHTML = listaHTML
                     + "<tr>"
+                    + "<td>" + animal.getId() + "<td>"
                     + "<td>" + animal.getNome() + "<td>"
                     + "<td>" + animal.getEspecie()+ "<td>"
                     + "<td>" + animal.getRaca()+ "<td>"
+                     + "<td>" + statusAdocao + "</td>"
                     + "<td><form action=AnimalSRV?acao=pre-edicao method='POST'>"
                     + "<input type='hidden' name='id' value="
                     + animal.getId() + "><input type='submit' value=editar>"

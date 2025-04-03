@@ -4,6 +4,7 @@
  */
 package model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,6 +25,10 @@ public class Animal {
     private String especie;
     private String raca;
     
+      @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT FALSE")
+    private Boolean adotado = false;
+      
+      
 
     public Animal() {
     }
@@ -33,6 +38,15 @@ public class Animal {
         this.nome = nome;
         this.especie = especie;
         this.raca = raca;
+    }
+    
+
+    public Boolean getAdotado() {
+        return adotado;
+    }
+
+    public void setAdotado(Boolean adotado) {
+        this.adotado = adotado;
     }
 
     public int getId() {
@@ -69,8 +83,10 @@ public class Animal {
 
     @Override
     public String toString() {
-        return "Animal{" + "id=" + id + ", nome=" + nome + ", especie=" + especie + ", raca=" + raca + '}';
+        return "Animal{" + "id=" + id + ", nome=" + nome + ", especie=" + especie + ", raca=" + raca + ", adotado=" + adotado + '}';
     }
+
+  
 
     
   

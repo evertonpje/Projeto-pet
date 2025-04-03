@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Listagem de Clientes</title>
+         <a href="index.html" style="position: absolute; left: 200px;">Voltar</a>
     </head>
 
     <%
@@ -23,6 +24,8 @@
         <table border="0">
             <thead>
                 <tr>
+                     <th>ID</th>
+                      <th></th>
                     <th>Nome</th>
                     <th></th>
                     <th>Telefone</th>

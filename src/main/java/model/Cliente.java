@@ -32,7 +32,7 @@ public class Cliente {
    
     
      @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = false)
-    @JoinTable(
+      @JoinTable(
         name = "cliente_animal", 
         joinColumns = @JoinColumn(name = "cliente_id"), 
         inverseJoinColumns = @JoinColumn(name = "animal_id")

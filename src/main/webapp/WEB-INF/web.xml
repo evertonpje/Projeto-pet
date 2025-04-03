@@ -8,6 +8,10 @@
         <servlet-name>AnimalSRV</servlet-name>
         <servlet-class>controller.AnimalSRV</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdocaoSRV</servlet-name>
+        <servlet-class>controller.AdocaoSRV</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ClienteSRV</servlet-name>
         <url-pattern>/ClienteSRV</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>AnimalSRV</servlet-name>
         <url-pattern>/AnimalSRV</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdocaoSRV</servlet-name>
+        <url-pattern>/AdocaoSRV</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
