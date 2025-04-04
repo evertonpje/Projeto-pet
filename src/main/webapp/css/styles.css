@@ -1,117 +1,141 @@
 *{
-    font-family: "Nunito";
-    margin: 0;
-    padding: 0;
+ font-family: "Nunito";
+ margin: 0;
+ padding: 0;
 }
 
 header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 250px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ padding: 50px;
 }
 
 .overview{
-    padding: 0px 120px;
+ padding: 0px 120px;
 }
 
 .users,
 .pets {
-    padding: 0px 120px;
-    margin-top: 100px;
+ padding: 0px 120px;
+ margin-top: 100px;
 }
 
 .users-grid,
 .pets-grid{
-    display: flex;  
-    gap: 25px;
-    margin-top: 30px;
+ display: flex;  
+ gap: 25px;
+ margin-top: 30px;
 }
 
 .user-item,
 .pet-item {
-    border: 1px solid yellow;
-    border-radius: 25px;
-    padding: 25px 50px;
-    display: flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items: center;
+ border: 1px solid yellow;
+ border-radius: 25px;
+ padding: 25px 50px;
+ display: flex;
+ flex-direction:column;
+ justify-content: center;
+ align-items: center;
 } 
-
-.overview-grid {
-    display: flex;
-    gap: 50px;
-    margin-top: 30px;
-}
-
-.overview-item {
-    background: #ffffff;
-    padding: 250px;
-    border-radius: 25px;
-    border: 1px solid yellow;
-}
-
-.overview-left {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column
-}
-
 .users-title,
 .pets-title {
-    display: flex;
-    justify-content: space-between;
+ display: flex;
+ justify-content: space-between;
 }
 
 button {
-    background: yellow;
-    color: #ffffff;
-    border: none;
-    outline: none;
-    cursor: pointer;
-}
-
-.add-button {
-    font-size: 16px;
-    padding: 5px 10px;
-    border-radius: 5px
+ 
+ color: #ffffff;
+ border: none;
+ outline: none;
+ padding: 5px 10px;
+ font-size: 16px;
+ cursor: pointer;
+ border-radius: 5px
 }
 
 .controls {
-    display: flex;
-    gap: 15px;
+ display: flex;
+ gap: 15px;
 }
 
 .controls button {
-    padding: 5px 15px;
-    border-radius: 5px;
+ padding: 5px 15px;
+ border-radius: 5px;
 }
 
 form {
-    width: 320px;
-    margin: auto;
+ width: 320px;
+ margin: auto;
 }
 
 .form-input {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
+ display: flex;
+ flex-direction: column;
+ margin-top: 20px;
 }
 
 input {
-    background: #eeeeee;
-    outline: none;
-    border: none;
-    padding: 5px 10px;
+ background: #eeeeee;
+ outline: none;
+ border: none;
+ padding: 5px 10px;
 }
 
 .submit {
-    background: yellow;
-    color: #ffffff;
-    width: 100%;
-    margin-top: 35px;
-    border-radius: 5px;
-    cursor: pointer;
+ background: yellow;
+ color: #ffffff;
+ width: 100%;
+ margin-top: 35px;
+ border-radius: 5px;
+ cursor: pointer;
+}
+
+.users {
+ display: flex;
+ gap: 20px;
+ justify-content: center;
+}
+
+.main {
+ margin: auto;
+ width: 1024px;
+}
+
+.overview-left a {
+ text-decoration: none;
+ background: rgb(255, 208, 0);
+ color: #ffffff;
+ border: none;
+ outline: none;
+ padding: 5px 10px;
+ font-size: 16px;
+ cursor: pointer;
+ border-radius: 5px
+}
+
+.overview-grid{
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr;
+ gap: 50px 120px;
+}
+
+.overview-grid a {
+ text-decoration: none;
+ border: 2px solid rgb(255, 208, 0);
+ width: 100%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ padding: 25px 50px;
+ border-radius: 20px;
+ transition: 0.25s ease-in-out;
+ font-weight: bold;
+ color: rgb(14, 7, 0);
+}
+
+.overview-grid a:hover {
+ color: #ffffff;
+ background: rgb(255, 208, 0);
 }
