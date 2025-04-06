@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link rel="stylesheet" type="text/css" href="./css/styles.css">
          <a href="index.html" style="position: absolute; left: 200px;">Voltar</a>
     </head>
     
