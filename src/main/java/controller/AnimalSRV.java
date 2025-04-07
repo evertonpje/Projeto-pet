@@ -109,9 +109,46 @@ public class AnimalSRV extends HttpServlet {
                     rd.forward(request, response);
                     break;
                     
+                    case "pesquisar":
+                    nome = request.getParameter("nome");
+                    InterfaceDao daoPesquisa = DaoFactory.novoAnimalDAO();
+
+                    List<Animal> listaPesquisa;
+                    if (nome == null || nome.trim().isEmpty()) {
+                        listaPesquisa = daoPesquisa.listar(); // busca todos se campo estiver vazio
+                    } else {
+                        listaPesquisa = daoPesquisa.filtrarPorNome("%" + nome + "%");
+                    }
+
+                    String listaHTMLFiltro = "";
+                    for (Animal animal : listaPesquisa) {
+                        String statusAdocao = (animal.getAdotado() != null && animal.getAdotado()) ? "Sim" : "Não";
+                        listaHTMLFiltro = listaHTMLFiltro
+                                + "<tr>"
+                                + "<td>" + animal.getId() + "<td>"
+                                + "<td>" + animal.getNome() + "<td>"
+                                + "<td>" + animal.getEspecie() + "<td>"
+                                + "<td>" + animal.getRaca() + "<td>"
+                                + "<td>" + statusAdocao + "</td>"
+                                + "<td class=\"td-class\">"
+                                + "<form action=AnimalSRV?acao=pre-edicao method='POST'>"
+                                + "<input type='hidden' name='id' value=" + animal.getId() + ">"
+                                + "<input type='submit' value=editar>"
+                                + "</form>"
+                                + "<form action=AnimalSRV?acao=exclusao method='POST'>"
+                                + "<input type='hidden' name='id' value=" + animal.getId() + ">"
+                                + "<input type='submit' value=excluir>"
+                                + "</form></td>"
+                                + "<tr>";
+                    }
+
+                    request.setAttribute("lista", listaHTMLFiltro);
+                    rd = request.getRequestDispatcher("ListagemAnimal.jsp?lista=" + java.net.URLEncoder.encode(listaHTMLFiltro, "UTF-8"));
+                    rd.forward(request, response);
+                    break;
             }
         } catch (Exception ex) {
-             System.out.println("Erro: " + ex.getMessage());
+            System.out.println("Erro: " + ex.getMessage());
         }
     }
     private String listagem() {

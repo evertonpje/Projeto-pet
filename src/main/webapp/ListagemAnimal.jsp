@@ -27,6 +27,11 @@
         <br>
         <br>
     <center>
+        <form method="get" action="AnimalSRV">
+        <input type="hidden" name="acao" value="pesquisar">
+        <input type="text" name="nome" placeholder="Pesquisar por nome"
+               value="<%= request.getParameter("nome") != null ? request.getParameter("nome") : "" %>">
+        <button type="submit">Buscar</button>
         <table border="0">
             <thead>
                 <tr>

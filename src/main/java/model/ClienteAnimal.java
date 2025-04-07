@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import model.Animal;
 import model.Cliente;
@@ -19,7 +21,24 @@ import model.Cliente;
 /**
  *
  * @author evert
- */@Entity
+ * 
+ */
+
+@NamedQueries({
+    @NamedQuery(
+        name = "ClienteAnimal.filtrarPorClienteId",
+        query = "SELECT ca FROM ClienteAnimal ca WHERE ca.cliente.id = :clienteId"
+    ),
+    @NamedQuery(
+        name = "ClienteAnimal.filtrarPorAnimalId",
+        query = "SELECT ca FROM ClienteAnimal ca WHERE ca.animal.id = :animalId"
+    ),
+    @NamedQuery(
+        name = "ClienteAnimal.filtrarPorClienteEAnimal",
+        query = "SELECT ca FROM ClienteAnimal ca WHERE ca.cliente.id = :clienteId AND ca.animal.id = :animalId"
+    )
+})
+@Entity
 @Table(name = "cliente_animal")
 public class ClienteAnimal {
      @Id

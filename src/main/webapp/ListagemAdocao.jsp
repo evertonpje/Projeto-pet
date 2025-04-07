@@ -13,11 +13,12 @@
         <link rel="stylesheet" type="text/css" href="css/styles.css">
     </head>
     
-        <%
-       String listaHTML = (String) request.getAttribute("lista");
-    %>    
-    
-    
+  <%
+   String listaHTML = (String) request.getAttribute("lista");
+   if (listaHTML == null) {
+       listaHTML = "";
+   }
+%>
     <body>
     <header>
         <a href="index.html" style="position: absolute; left: 200px;">Voltar</a>
@@ -28,6 +29,12 @@
         <br>
         <br>
     <center>
+         <form action="AdocaoSRV?acao=pesquisar" method="GET">
+    <input type="text" name="cliente_id" placeholder="ID do Cliente">
+    <input type="text" name="animal_id" placeholder="ID do Animal">
+    <br>
+    <input type="submit" value="Pesquisar">
+</form>
         <table border="0">
             <thead>
                 <tr>
@@ -36,6 +43,8 @@
                     <th>Cliente</th>
               
                     <th>Animal</th>
+                    
+                    <th>ações</th>
                     
                        
                     

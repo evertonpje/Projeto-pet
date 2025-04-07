@@ -14,12 +14,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 /**
  *
  * @author evert
  */
+@NamedQuery(name = "Cliente.filtrarPorNome", query = "SELECT c FROM Cliente c WHERE c.nome LIKE :nome")
 @Entity
 public class Cliente {
     @Id
@@ -37,6 +39,8 @@ public class Cliente {
         joinColumns = @JoinColumn(name = "cliente_id"), 
         inverseJoinColumns = @JoinColumn(name = "animal_id")
     )
+     
+     
     private Collection<Animal> animal;
 
     public Cliente() {

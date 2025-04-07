@@ -9,12 +9,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 
 /**
  *
  * @author evert
  */
+@NamedQuery(name = "Animal.filtrarPorNome", query = "SELECT c FROM Animal c WHERE c.nome LIKE :nome")
 @Entity
 public class Animal {
     

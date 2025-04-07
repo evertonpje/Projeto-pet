@@ -6,6 +6,7 @@ package model.dao;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import model.Animal;
 import model.ClienteAnimal;
@@ -97,6 +98,38 @@ public class ClienteAnimalDaoJpa implements InterfaceDao<ClienteAnimal>  {
             em.close();
         }
     }
+    
+    public List<ClienteAnimal> filtrarPorClienteEAnimal(Integer clienteId, Integer animalId) throws Exception {
+    EntityManager em = ConnFactory.getEntityManager();
+    List<ClienteAnimal> resultado;
+
+    try {
+        em.getTransaction().begin();
+
+        Query query;
+
+        if (clienteId != null && animalId != null) {
+            query = em.createNamedQuery("ClienteAnimal.filtrarPorClienteEAnimal");
+            query.setParameter("clienteId", clienteId);
+            query.setParameter("animalId", animalId);
+        } else if (clienteId != null) {
+            query = em.createNamedQuery("ClienteAnimal.filtrarPorClienteId");
+            query.setParameter("clienteId", clienteId);
+        } else if (animalId != null) {
+            query = em.createNamedQuery("ClienteAnimal.filtrarPorAnimalId");
+            query.setParameter("animalId", animalId);
+        } else {
+            query = em.createQuery("FROM ClienteAnimal ca");
+        }
+
+        resultado = query.getResultList();
+        em.getTransaction().commit();
+    } finally {
+        em.close();
+    }
+
+    return resultado;
+}
 
    
 }

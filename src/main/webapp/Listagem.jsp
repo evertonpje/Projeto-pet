@@ -14,7 +14,9 @@
     </head>
 
     <%
+        
         String listaHTML = request.getParameter("lista");
+        
     %>    
 
     <body>
@@ -27,6 +29,13 @@
         <br>
         <br>
     <center>
+        <form method="get" action="ClienteSRV">
+        <input type="hidden" name="acao" value="pesquisar">
+        <input type="text" name="nome" placeholder="Pesquisar por nome"
+               value="<%= request.getParameter("nome") != null ? request.getParameter("nome") : "" %>">
+        <button type="submit">Buscar</button>
+    </form>
+        <br>
         <table border="0">
             <thead>
                 <tr>

@@ -108,7 +108,44 @@ public class ClienteSRV extends HttpServlet {
                     rd.forward(request, response);
                     break;
                     
+                   case "pesquisar":
+    nome = request.getParameter("nome");
+    InterfaceDao daoPesquisa = DaoFactory.novoClienteDAO();
+    
+    List<Cliente> listaPesquisa;
+    if (nome == null || nome.trim().isEmpty()) {
+        listaPesquisa = daoPesquisa.listar(); // busca todos se campo estiver vazio
+    } else {
+        listaPesquisa = daoPesquisa.filtrarPorNome("%" + nome + "%");
+    }
+
+    String listaHTMLFiltro = "";
+    for (Cliente cliente : listaPesquisa) {
+        listaHTMLFiltro = listaHTMLFiltro
+                + "<tr>"
+                + "<td>" + cliente.getId() + "<td>"
+                + "<td>" + cliente.getNome() + "<td>"
+                + "<td>" + cliente.getTelefone() + "<td>"
+                + "<td>" + cliente.getEmail() + "<td>"
+                + "<td>" + cliente.getEndereco() + "<td>"
+                + "<td class=\"td-class\">"
+                + "<form action=ClienteSRV?acao=pre-edicao method='POST'>"
+                + "<input type='hidden' name='id' value=" + cliente.getId() + ">"
+                + "<input type='submit' value=editar>"
+                + "</form>"
+                + "<form action=ClienteSRV?acao=exclusao method='POST'>"
+                + "<input type='hidden' name='id' value=" + cliente.getId() + ">"
+                + "<input type='submit' value=excluir>"
+                + "</form></td>"
+                + "<tr>";
+    }
+
+    request.setAttribute("lista", listaHTMLFiltro);
+    rd = request.getRequestDispatcher("Listagem.jsp?lista=" + java.net.URLEncoder.encode(listaHTMLFiltro, "UTF-8"));
+    rd.forward(request, response);
+    break;
             }
+            
         } catch (Exception ex) {
              System.out.println("Erro: " + ex.getMessage());
         }
