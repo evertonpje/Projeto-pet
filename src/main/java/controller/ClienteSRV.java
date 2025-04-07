@@ -36,6 +36,7 @@ public class ClienteSRV extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
      try {
+       
             
             String acao = request.getParameter("acao");
             String id = request.getParameter("id");
@@ -130,18 +131,19 @@ public class ClienteSRV extends HttpServlet {
                     + "<td>" + cliente.getTelefone() + "<td>"
                     + "<td>" + cliente.getEmail() + "<td>"
                     + "<td>" + cliente.getEndereco() + "<td>"
-                    + "<td><form action=ClienteSRV?acao=pre-edicao method='POST'>"
+                    + "<td class=\"td-class\"><form action=ClienteSRV?acao=pre-edicao method='POST'>"
                     + "<input type='hidden' name='id' value="
                     + cliente.getId() + "><input type='submit' value=editar>"
-                    + "</form></td>"
+                    + "</form>"
                     + "<form action=ClienteSRV?acao=exclusao method='POST'>"
-                    + "<td><input type='hidden' name='id' value="
+                    + "<input type='hidden' name='id' value="
                     + cliente.getId() + "><input type='submit' value=excluir></td>"
                     + "</form>"
                     + "<tr>";
         }
 
         return listaHTML;
+        
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

@@ -140,10 +140,10 @@ input {
  background: rgb(255, 208, 0);
 }
 
-table button {
+table input {
  background: rgb(255, 208, 0);
  text-decoration: none;
- width: 100%;
+ width: 80px;
  display: flex;
  align-items: center;
  justify-content: center;
@@ -153,3 +153,11 @@ table button {
  font-weight: bold;
  color: #ffffff;
 }
+
+.td-class{
+    display: flex;
+    gap: 10px;
+    width: 80px;
+    
+}
+

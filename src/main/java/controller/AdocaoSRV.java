@@ -76,6 +76,30 @@ public class AdocaoSRV extends HttpServlet {
                 rd.forward (request, response);
                 
                     break;
+        case "exclusao":
+        try {
+            int id = (int) Long.parseLong(request.getParameter("id"));
+            ClienteAnimal clienteAnimal = (ClienteAnimal) dao.pesquisarPorId(id);
+
+            if (clienteAnimal != null) {
+               
+                Animal animalAdotado = clienteAnimal.getAnimal();
+                animalAdotado.setAdotado(false);
+                animalDao.editar(animalAdotado);
+
+                dao.excluir(clienteAnimal);
+                request.setAttribute("mensagem", "Adoção excluída com sucesso.");
+            } else {
+                request.setAttribute("mensagem", "Adoção não encontrada.");
+            }
+        } catch (Exception e) {
+            request.setAttribute("mensagem", "Erro ao excluir adoção: " + e.getMessage());
+        }
+
+        rd = request.getRequestDispatcher("AdocaoSRV?acao=listagem");
+        rd.forward(request, response);
+        break;
+
                 
                 case "listagem":
                      String lista = listagem(); // Gera a lista HTML
@@ -93,7 +117,7 @@ public class AdocaoSRV extends HttpServlet {
     
     private String listagem() {
     InterfaceDao dao = new ClienteAnimalDaoJpa();
-    List<ClienteAnimal> lista = new ArrayList<>(); // Evita NullPointerException
+    List<ClienteAnimal> lista = new ArrayList<>(); 
 
     try {
         lista = dao.listar();
@@ -111,7 +135,14 @@ public class AdocaoSRV extends HttpServlet {
                 .append("<td>").append(clienteA.getId()).append("</td>")
                 .append("<td>").append(nomeCliente).append("</td>")
                 .append("<td>").append(nomeAnimal).append("</td>")
+                 .append("<td class=\"td-class\">")
+                    .append("<form action='AdocaoSRV?acao=exclusao' method='POST' style='display:inline;'>")
+                    .append("<input type='hidden' name='id' value='").append(clienteA.getId()).append("'>")
+                    .append("<input type='submit' value='excluir'>")
+                    .append("</form>")
+                .append("</td>")
                 .append("</tr>");
+              
     }
 
     return listaHTML.toString();

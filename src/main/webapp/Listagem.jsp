@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Listagem de Clientes</title>
-        <link rel="stylesheet" type="text/css" href="./css/styles.css">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
     </head>
 
     <%
@@ -39,8 +39,7 @@
                     <th>Email</th>
                      <th></th>
                        <th>Endereco</th>
-                       <th></th>
-                       <th></th>
+                       
                        
                     
                 </tr>
